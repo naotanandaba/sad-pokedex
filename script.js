@@ -1,6 +1,6 @@
 const numPokemon = 151;
 
-const make1PokemonEntry = (id) => {
+/*const make1PokemonEntry = (id) => {
     const divisio = document.createElement('DIV');
     divisio.classList.add('pokemon');
     const photoEntry = document.createElement('PICTURE');
@@ -22,6 +22,11 @@ const getAllPokemon = async () => {
 }
 
 getAllPokemon();
+*/
+
+const pokedex = document.getElementById("pokedex");
+
+console.log(pokedex);
 
 const fetchPokemon = () => {
 
@@ -38,8 +43,12 @@ const fetchPokemon = () => {
             image: data.sprites['front_default'],
             type: data.types.map(type => type.type.name).join(", ")
         }));
-        console.log(pokemon);
+        displayPokemon(pokemon);
     });
 };
+
+const displayPokemon = (pokemon) => {
+    console.log(pokemon);
+}
 
 fetchPokemon();
