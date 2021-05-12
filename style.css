@@ -1,4 +1,32 @@
-.menu{
+body{
+    background-color: goldenrod
+}
+
+.card {
+    list-style: none;
+    padding: 50px;
+    background-color: aliceblue;
+    color: #222;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.card-subtitle {
+    color:black;
+    margin-top: 5px;
+}
+
+.card-image{
+    height: 180px;
+    margin: 0 auto;
+}
+
+/*.menu{
     display: flex;
     justify-content: space-evenly;
     list-style: none;
@@ -9,3 +37,4 @@
     background-color: brown;
     height: 300px;
 }
+*/
