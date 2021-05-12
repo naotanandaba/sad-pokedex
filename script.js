@@ -1,7 +1,6 @@
 
 
 const make1PokemonEntry = (id) => {
-    const i = a;
     const divisio = document.createElement('DIV');
     divisio.classList.add('pokemon');
     const photoEntry = document.createElement('PICTURE');
