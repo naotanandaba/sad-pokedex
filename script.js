@@ -31,7 +31,7 @@ const displayPokemon = (pokemon) => {
     h2.textContent = `${pokemon.id}. ${pokemon.name}`;
     const p = document.createElement('P');
 
-    p.textContent = 'Type: ';
+    p.textContent = 'Type:';
     pokemon.types.forEach((type) => {
         const span = document.createElement('SPAN');
         span.textContent = type.toUpperCase();

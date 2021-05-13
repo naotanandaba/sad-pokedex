@@ -40,10 +40,78 @@ body{
 
 .typebox{
     border-style: ridge;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 2px;
+    color: rgb(47, 49, 49);
 }
 
 .grass{
     background-color: green;
+}
+
+.poison{
+    background-color: blueviolet;
+}
+
+.fire{
+    background-color: firebrick;
+}
+
+.water{
+    background-color: deepskyblue;
+}
+
+.flying{
+    background-color: skyblue;
+}
+
+.bug{
+    background-color: greenyellow;
+}
+
+.normal{
+    background-color: rgb(170, 164, 155);
+}
+
+.electric{
+    background-color: yellow;
+}
+
+.ground{
+    background-color: rgb(94, 74, 48);
+}
+
+.fairy{
+    background-color: pink;
+}
+
+.fighting{
+    background-color: brown;
+}
+
+.psychic{
+    background-color: palevioletred;
+}
+
+.rock{
+    background-color: rgb(129, 93, 36);
+}
+
+.steel{
+    background-color: steelblue;
+}
+
+.ice{
+    background-color: aqua;
+}
+
+.ghost{
+    background-color: rgb(66, 0, 219);
+}
+
+.dragon{
+    background-color: rgb(37, 37, 255);
 }
 
 .card:hover {
