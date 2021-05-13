@@ -54,16 +54,3 @@ body{
         transform: translateY(-0px);
     }
 }
-
-/*.menu{
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    background-color: aqua;
-}
-
-.pokemon{
-    background-color: brown;
-    height: 300px;
-}
-*/
