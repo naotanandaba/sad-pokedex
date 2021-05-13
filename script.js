@@ -4,24 +4,19 @@ const pokedex = document.getElementById("pokedex");
 
 console.log(pokedex);
 
-const fetchPokemon = () => {
-
-    const promises = [];
-    for (let i = 1; i <= numPokemon; i++) {
-        const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-        promises.push(fetch(url).then((res) => res.json()));
+const fetchPokemon = async () => {
+    const pokemonURL = `https://pokeapi.co/api/v2/pokemon?limit=${numPokemon}`;
+    const res = await fetch(pokemonURL);
+    const data = await res.json();
+    const pokemon = data.results.map((result, index) => 
+    ({
+        ...result,
+        id: index +1,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`
+    }));
+    for (let j = 1; j <= numPokemon; j++) {
+    displayPokemon(j - 1, pokemon);
     }
-    Promise.all(promises).then(results => {
-        const pokemon = results.map((data) => ({
-            name: data.name,
-            id: data.id,
-            image: data.sprites['front_default'],
-            type: data.types.map(type => type.type.name).join(", ")
-        }));
-        for (let j = 1; j <= numPokemon; j++) {
-            displayPokemon(j - 1, pokemon);
-        }
-    });
 };
 
 /*const displayPokemon = (pokemon) => {
