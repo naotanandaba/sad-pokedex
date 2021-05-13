@@ -8,15 +8,15 @@ const fetchPokemon = async () => {
     const pokemonURL = `https://pokeapi.co/api/v2/pokemon?limit=${numPokemon}`;
     const res = await fetch(pokemonURL);
     const data = await res.json();
-    const pokemon = data.results.map((result, index) => 
-    ({
-        ...result,
-        id: index +1,
-        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`,
-    }));
-    for (let j = 1; j <= numPokemon; j++) {
-    displayPokemon(j - 1, pokemon);
-    selectPokemon(j)
+    const pokeilink = data.results.map((result, index) => ({
+        ...result, //result és un objecte amb name i url com a atributs
+        id: index + 1
+    }))
+
+    for (let j = 0; j < numPokemon; j++) {
+        const pokemon = await selectPokemon(pokeilink[j]);
+        displayPokemon(j, pokemon);
+        //selectPokemon(j)
     }
 };
 
@@ -35,16 +35,16 @@ const displayPokemon = (pos, pokemon) => {
     li.classList.add('card');
     const img = document.createElement('IMG');
     img.classList.add('card-image');
-    img.setAttribute('src', `${pokemon[pos].image}`);
+    img.setAttribute('src', `${pokemon.image}`);
     const h2 = document.createElement('H2');
     h2.classList.add('card-title');
-    h2.textContent = `${pokemon[pos].id}. ${pokemon[pos].name}`;
+    h2.textContent = `${pokemon.id}. ${pokemon.name}`;
     const p = document.createElement('P');
 
-    if (pokemon[pos].type === 'planta') {
-        p.classList.add('planta');
+    if (pokemon.type.startsWith('grass') || pokemon.type.endsWith('grass')) {
+        p.classList.add('grass');
     }
-    p.textContent = `Type: ${pokemon[pos].type}`;
+    p.textContent = `Type: ${pokemon.type}`;
     li.appendChild(img);
     li.appendChild(h2);
     li.appendChild(p);
@@ -52,12 +52,17 @@ const displayPokemon = (pos, pokemon) => {
     pokedex.appendChild(li);
 }
 
-const selectPokemon = async (id) => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+const selectPokemon = async (pokeilink) => {
+    const url = pokeilink.url;
     const res = await fetch(url);
     const data = await res.json();
     const type = data.types.map(type => type.type.name).join(", ")
-    console.log(type);
+    return {
+        name: pokeilink.name,
+        id: pokeilink.id,
+        type: type,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeilink.id}.png`
+    }
 }
 
 fetchPokemon();

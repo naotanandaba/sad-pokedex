@@ -37,6 +37,11 @@ body{
     padding: 40px;
     margin:0 auto;
 }
+
+.grass{
+    background-color: green;
+}
+
 .card:hover {
     animation: bounce 0.5s linear
 }
