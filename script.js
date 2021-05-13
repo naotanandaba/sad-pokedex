@@ -12,10 +12,11 @@ const fetchPokemon = async () => {
     ({
         ...result,
         id: index +1,
-        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index+1}.png`,
     }));
     for (let j = 1; j <= numPokemon; j++) {
     displayPokemon(j - 1, pokemon);
+    selectPokemon(j)
     }
 };
 
@@ -55,8 +56,8 @@ const selectPokemon = async (id) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayPopUp(pokemon);
-    console.log(id);
+    const type = data.types.map(type => type.type.name).join(", ")
+    console.log(type);
 }
 
 fetchPokemon();
