@@ -8,17 +8,18 @@ const fetchPokemon = async () => {
     const pokemonURL = `https://pokeapi.co/api/v2/pokemon?limit=${numPokemon}`;
     const res = await fetch(pokemonURL);
     const data = await res.json();
-    const pokeilink = data.results.map((result, index) => ({
+    const pokesilinks = data.results.map((result, index) => ({
         ...result, //result és un objecte amb name i url com a atributs
         id: index + 1
     }))
 
     for (let j = 0; j < numPokemon; j++) {
-        const pokemon = await selectPokemon(pokeilink[j]);
+        const pokemon = await obtainPokemon(pokesilinks[j]);
         displayPokemon(pokemon);
     }
 };
 
+//A partir d'1 objecte pokemon, es realitza el codi HTML amb les classes CSS adients per a visualitzar-lo
 const displayPokemon = (pokemon) => {
     const li = document.createElement('LI');
     li.classList.add('card');
@@ -41,15 +42,15 @@ const displayPokemon = (pokemon) => {
     pokedex.appendChild(li);
 }
 
-const selectPokemon = async (pokeilink) => {
+//A partir d'1 objecte pokeilink (name, url i id), s'obtenen les dades del pokemon
+const obtainPokemon = async (pokeilink) => {
     const url = pokeilink.url;
     const res = await fetch(url);
     const data = await res.json();
-    const type = data.types.map(type => type.type.name).join(", ")
     return {
         name: pokeilink.name,
         id: pokeilink.id,
-        type: type,
+        type: data.types.map(type => type.type.name).join(", "),
         image: data.sprites.front_default
     }
 }
