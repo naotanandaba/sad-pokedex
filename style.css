@@ -10,7 +10,7 @@ body{
     text-align: center;
 }
 
-#pokedex {
+.pokedex {
     padding-inline-start: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
