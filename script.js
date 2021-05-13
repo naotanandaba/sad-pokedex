@@ -20,16 +20,6 @@ const fetchPokemon = async () => {
     }
 };
 
-/*const displayPokemon = (pokemon) => {
-    const pokemonHTMLString = pokemon.map(pokemon => `
-    <li class = "card"  oneclick = "selectPokemon(${pokemon.id})">
-        <img class="card-image" src="${pokemon.image}"/>
-        <h2 class="card-title">${pokemon.id}. ${pokemon.name}</h2>
-    </li>
-    `).join('');
-    pokedex.innerHTML = pokemonHTMLString;
-}*/
-
 const displayPokemon = (pos, pokemon) => {
     const li = document.createElement('LI');
     li.classList.add('card');
