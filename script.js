@@ -15,12 +15,11 @@ const fetchPokemon = async () => {
 
     for (let j = 0; j < numPokemon; j++) {
         const pokemon = await selectPokemon(pokeilink[j]);
-        displayPokemon(j, pokemon);
-        //selectPokemon(j)
+        displayPokemon(pokemon);
     }
 };
 
-const displayPokemon = (pos, pokemon) => {
+const displayPokemon = (pokemon) => {
     const li = document.createElement('LI');
     li.classList.add('card');
     const img = document.createElement('IMG');
@@ -51,7 +50,7 @@ const selectPokemon = async (pokeilink) => {
         name: pokeilink.name,
         id: pokeilink.id,
         type: type,
-        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeilink.id}.png`
+        image: data.sprites.front_default
     }
 }
 
