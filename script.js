@@ -31,10 +31,15 @@ const displayPokemon = (pokemon) => {
     h2.textContent = `${pokemon.id}. ${pokemon.name}`;
     const p = document.createElement('P');
 
-    if (pokemon.type.startsWith('grass') || pokemon.type.endsWith('grass')) {
-        p.classList.add('grass');
-    }
-    p.textContent = `Type: ${pokemon.type}`;
+    p.textContent = 'Type: ';
+    pokemon.types.forEach((type) => {
+        const span = document.createElement('SPAN');
+        span.textContent = type.toUpperCase();
+        span.classList.add(type);
+        span.classList.add('typebox');
+        p.appendChild(span);
+    });
+
     li.appendChild(img);
     li.appendChild(h2);
     li.appendChild(p);
@@ -47,10 +52,11 @@ const obtainPokemon = async (pokeilink) => {
     const url = pokeilink.url;
     const res = await fetch(url);
     const data = await res.json();
+    console.log(data.types.map(type => type.type.name));
     return {
         name: pokeilink.name,
         id: pokeilink.id,
-        type: data.types.map(type => type.type.name).join(", "),
+        types: data.types.map(type => type.type.name),
         image: data.sprites.front_default
     }
 }

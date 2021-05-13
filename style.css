@@ -38,6 +38,10 @@ body{
     margin:0 auto;
 }
 
+.typebox{
+    border-style: ridge;
+}
+
 .grass{
     background-color: green;
 }
