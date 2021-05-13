@@ -26,6 +26,10 @@ body{
     margin: 0 auto;
 }
 
+.planta{
+    background-color: green;
+}
+
 /*.menu{
     display: flex;
     justify-content: space-evenly;
