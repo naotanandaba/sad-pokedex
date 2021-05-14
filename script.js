@@ -57,6 +57,11 @@ const obtainPokemon = async (pokeilink) => {
         name: pokeilink.name,
         id: pokeilink.id,
         types: data.types.map(type => type.type.name),
+        height: data.height,
+        weight: data.weight,
+        stats: data.stats,
+        abilities: data.abilities,
+        moves: data.moves,
         image: data.sprites.front_default
     }
 }
