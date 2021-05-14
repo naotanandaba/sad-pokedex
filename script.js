@@ -33,11 +33,13 @@ const displayPokemon = (pokemon) => {
 
     p.textContent = 'Type:';
     pokemon.types.forEach((type) => {
-        const span = document.createElement('SPAN');
-        span.textContent = type.toUpperCase();
-        span.classList.add(type);
-        span.classList.add('typebox');
-        p.appendChild(span);
+        const a = document.createElement('A');
+        a.textContent = type.toUpperCase();
+        a.classList.add(type);
+        a.classList.add('typebox');
+        const nameLink = type.substring(0, 1).toUpperCase() + type.substring(1, type.length);
+        a.setAttribute('href', `https://bulbapedia.bulbagarden.net/wiki/${nameLink}_(type)`);
+        p.appendChild(a);
     });
 
     li.appendChild(img);
@@ -52,7 +54,6 @@ const obtainPokemon = async (pokeilink) => {
     const url = pokeilink.url;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data.types.map(type => type.type.name));
     return {
         name: pokeilink.name,
         id: pokeilink.id,

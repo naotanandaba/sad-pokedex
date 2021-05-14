@@ -39,6 +39,7 @@ body{
 }
 
 .typebox{
+    text-decoration: none;
     border-style: ridge;
     margin-left: 10px;
     border-radius: 5px;
