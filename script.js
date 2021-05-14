@@ -34,11 +34,13 @@ const displayPokemon = (pokemon) => {
     p.textContent = 'Type:';
     pokemon.types.forEach((type) => {
         const a = document.createElement('A');
+        const nameLink = type.substring(0, 1).toUpperCase() + type.substring(1, type.length);
+        a.setAttribute('href', `https://bulbapedia.bulbagarden.net/wiki/${nameLink}_(type)`);
+        a.setAttribute('target', '_blank');
         a.textContent = type.toUpperCase();
         a.classList.add(type);
         a.classList.add('typebox');
-        const nameLink = type.substring(0, 1).toUpperCase() + type.substring(1, type.length);
-        a.setAttribute('href', `https://bulbapedia.bulbagarden.net/wiki/${nameLink}_(type)`);
+
         p.appendChild(a);
     });
 
