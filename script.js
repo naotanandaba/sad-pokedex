@@ -2,7 +2,9 @@ const numPokemon = 151;
 
 const pokedex = document.getElementById("pokedex");
 
-console.log(pokedex);
+//const llistap = [];
+
+//TODO: Afegir id="card" i data-name="nompokemon" a cada un dels li, i escoltar els events amb id card i compararlos deprés amb data-name
 
 const fetchPokemon = async () => {
     const pokemonURL = `https://pokeapi.co/api/v2/pokemon?limit=${numPokemon}`;
@@ -16,12 +18,14 @@ const fetchPokemon = async () => {
     for (let j = 0; j < numPokemon; j++) {
         const pokemon = await obtainPokemon(pokesilinks[j]);
         displayPokemon(pokemon);
+        //llistap.push(pokemon);
     }
 };
 
 //A partir d'1 objecte pokemon, es realitza el codi HTML amb les classes CSS adients per a visualitzar-lo
 const displayPokemon = (pokemon) => {
     const li = document.createElement('LI');
+
     li.classList.add('card');
     const img = document.createElement('IMG');
     img.classList.add('card-image');
@@ -70,3 +74,4 @@ const obtainPokemon = async (pokeilink) => {
 }
 
 fetchPokemon();
+
