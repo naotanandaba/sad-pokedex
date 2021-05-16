@@ -32,7 +32,7 @@ const displayPokemon = (pokemon) => {
     //li.setAttribute('data-name', pokemon.name);
     const modal = document.getElementById('modal');
     const ident = document.getElementById('ident');
-    const name = document.getElementById('id');
+    const name = document.getElementById('name');
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
 
