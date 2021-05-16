@@ -1,4 +1,4 @@
-const numPokemon = 1;
+const numPokemon = 151;
 
 const pokedex = document.getElementById("pokedex");
 
