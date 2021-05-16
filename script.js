@@ -1,4 +1,4 @@
-const numPokemon = 151;
+const numPokemon = 1;
 
 const pokedex = document.getElementById("pokedex");
 
@@ -31,14 +31,14 @@ const displayPokemon = (pokemon) => {
     //li.id = 'card';
     //li.setAttribute('data-name', pokemon.name);
     const modal = document.getElementById('modal');
-    const ident = document.getElementById('ident');
-    const name = document.getElementById('name');
+    const height = document.getElementById('height');
+    const weight = document.getElementById('weight');
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
-
+            console.log(pokemon);
             modal.classList.add('modal--show');
-            ident.textContent = pokemon.id;
-            name.textContent = pokemon.name;
+            height.textContent = 'Height: ' + pokemon.height / 10 + ' ' + 'm';
+            weight.textContent = 'Weight: ' + pokemon.weight / 10 + ' ' + 'kg';
         }
     });
     modal.addEventListener('click', (e) => {
