@@ -27,11 +27,13 @@ const displayPokemon = (pokemon) => {
     const li = document.createElement('LI');
 
     li.classList.add('card');
-    li.id = 'card';
-    li.setAttribute('data-name', pokemon.name);
+    //li.id = 'card';
+    //li.setAttribute('data-name', pokemon.name);
 
     li.addEventListener('click', (e) => {
-        console.log(e.target);
+        if (!e.target.classList.contains('typebox')) {
+            console.log(pokemon.name);
+        }
     });
     const img = document.createElement('IMG');
     img.classList.add('card-image');
