@@ -1,8 +1,9 @@
-const numPokemon = 151;
+const numPokemon = 10;
 
 const pokedex = document.getElementById("pokedex");
 
 const llistap = [];
+
 
 //TODO: Afegir id="card" i data-name="nompokemon" a cada un dels li, i escoltar els events amb id card i compararlos deprés amb data-name
 
@@ -30,11 +31,14 @@ const displayPokemon = (pokemon) => {
     //li.id = 'card';
     //li.setAttribute('data-name', pokemon.name);
     const modal = document.getElementById('modal');
+    const ident = document.getElementById('ident');
+    const name = document.getElementById('id');
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
 
             modal.classList.add('modal--show');
-            console.log(pokemon);
+            ident.textContent = pokemon.id;
+            name.textContent = pokemon.name;
         }
     });
     modal.addEventListener('click', (e) => {
