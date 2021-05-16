@@ -8,6 +8,7 @@ body{
     background-color: aliceblue;
     color: #222;
     text-align: center;
+    cursor: pointer;
 }
 
 .pokedex {
@@ -137,6 +138,11 @@ body{
 
 .dragon{
     background-color: rgb(37, 37, 255);
+}
+
+.dark{
+    background-color: #222;
+    color: white;
 }
 
 .card:hover {

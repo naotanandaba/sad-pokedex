@@ -32,7 +32,9 @@ const displayPokemon = (pokemon) => {
     const modal = document.getElementById('modal');
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
+
             modal.classList.add('modal--show');
+            console.log(pokemon);
         }
     });
     modal.addEventListener('click', (e) => {
@@ -68,11 +70,25 @@ const displayPokemon = (pokemon) => {
     pokedex.appendChild(li);
 }
 
-//A partir d'1 objecte pokeilink (name, url i id), s'obtenen les dades del pokemon
+//A partir d'1 objecte pokeilink (name, url i id), s'obtenen les dades del pokemon 
+//Es fan els fetchs necessaris
 const obtainPokemon = async (pokeilink) => {
-    const url = pokeilink.url;
-    const res = await fetch(url);
+    const urlPoke = pokeilink.url;
+    const res = await fetch(urlPoke);
     const data = await res.json();
+    const URLsDescAbilities = data.abilities.map((dab) => dab = dab.ability.url);
+    const descAbilities = [URLsDescAbilities.length];
+
+    //Obtenir les habilitats dels pokes
+    for (const i in URLsDescAbilities) {
+        descAbilities[i] = await fetch(URLsDescAbilities[i]);
+        descAbilities[i] = await descAbilities[i].json();
+        for (const desc of descAbilities[i].effect_entries) {
+            if (desc.language.name === 'en') {
+                descAbilities[i] = desc;
+            }
+        }
+    }
     return {
         name: pokeilink.name,
         id: pokeilink.id,
@@ -81,6 +97,7 @@ const obtainPokemon = async (pokeilink) => {
         weight: data.weight,
         stats: data.stats,
         abilities: data.abilities,
+        descAb: descAbilities.map((ability) => ability.effect),
         moves: data.moves,
         image: data.sprites.front_default
     }
