@@ -2,7 +2,7 @@ const numPokemon = 151;
 
 const pokedex = document.getElementById("pokedex");
 
-//const llistap = [];
+const llistap = [];
 
 //TODO: Afegir id="card" i data-name="nompokemon" a cada un dels li, i escoltar els events amb id card i compararlos deprés amb data-name
 
@@ -18,7 +18,7 @@ const fetchPokemon = async () => {
     for (let j = 0; j < numPokemon; j++) {
         const pokemon = await obtainPokemon(pokesilinks[j]);
         displayPokemon(pokemon);
-        //llistap.push(pokemon);
+        llistap.push(pokemon);
     }
 };
 
@@ -27,6 +27,12 @@ const displayPokemon = (pokemon) => {
     const li = document.createElement('LI');
 
     li.classList.add('card');
+    li.id = 'card';
+    li.setAttribute('data-name', pokemon.name);
+
+    li.addEventListener('click', (e) => {
+        console.log(e.target);
+    });
     const img = document.createElement('IMG');
     img.classList.add('card-image');
     img.setAttribute('src', `${pokemon.image}`);
