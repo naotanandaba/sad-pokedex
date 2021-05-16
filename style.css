@@ -33,6 +33,30 @@ body{
     margin: 0 auto;
 }
 
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 228, 196, 0.616);
+    transform: scale(0);
+}
+
+.modal-content{
+    background-color: gainsboro;
+    width: 90vw;
+    height: 75vh;
+    padding: 3rem;
+}
+
+.modal--show{
+    transform: scale(1);
+}
+
 .container {
     padding: 40px;
     margin:0 auto;

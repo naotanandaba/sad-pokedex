@@ -29,10 +29,15 @@ const displayPokemon = (pokemon) => {
     li.classList.add('card');
     //li.id = 'card';
     //li.setAttribute('data-name', pokemon.name);
-
+    const modal = document.getElementById('modal');
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
-            console.log(pokemon.name);
+            modal.classList.add('modal--show');
+        }
+    });
+    modal.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('modal-content')) {
+            modal.classList.remove('modal--show');
         }
     });
     const img = document.createElement('IMG');
