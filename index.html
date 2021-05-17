@@ -5,13 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width = device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pokedex</title>
+    <title>Llista de pokémon</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Pokedex</h1>
-    <form action="">
+    <h1>Pokedex: pokemon list</h1>
+    <nav>
+        <ul class="menu" id="main-menu">
+            <li class="menu-item">
+                <a href="index.html" class="menu-link">Llista de pokemon</a>
+            </li>
+            <li class="menu-item">
+                <a href="quiz.html" class="menu-link">Quiz</a>
+            </li>
+
+        </ul>
+    </nav>
+    <form>
         Ordenar per:
         <select name="orders" id="select">
             <option value="id" selected>ID</option>

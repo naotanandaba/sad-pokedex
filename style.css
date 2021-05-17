@@ -11,6 +11,29 @@ body{
     cursor: pointer;
 }
 
+.menu{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    background-color: aliceblue;
+}
+
+.check-button{
+    background-color: aliceblue;
+}
+
+.check-correct{
+    background-color: green;
+}
+
+.check-wrong{
+    background-color: crimson;
+}
+
+.answer{
+    display: block;
+}
+
 .pokedex {
     padding-inline-start: 0;
     display: grid;
