@@ -46,14 +46,17 @@ const displayPokemon = (pokemon) => {
     const weight = document.getElementById('weight');
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
-            console.log(pokemon);
             modal.classList.add('modal--show');
             height.textContent = 'Height: ' + pokemon.height / 10 + ' ' + 'm';
+            //height.classList.add('modal-content');
             weight.textContent = 'Weight: ' + pokemon.weight / 10 + ' ' + 'kg';
+            //height.classList.add('modal-content');
         }
     });
     modal.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('modal-content')) {
+        console.log(e.target);
+        if (!e.target.classList.contains('modal-content') && !e.target
+            .parentElement.classList.contains('modal-content')) {
             modal.classList.remove('modal--show');
         }
     });
