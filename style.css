@@ -52,6 +52,7 @@ body{
     width: 90vw;
     height: 75vh;
     padding: 3rem;
+    overflow-y: scroll;
 }
 
 .modal--show{

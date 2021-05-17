@@ -8,14 +8,25 @@ const llistap = [];
 //TODO: Afegir id="card" i data-name="nompokemon" a cada un dels li, i escoltar els events amb id card i compararlos deprés amb data-name
 
 const fetchPokemon = async () => {
+    //Obtenció de l'objecte amb tots els pokemon i links a la seva informació
     const pokemonURL = `https://pokeapi.co/api/v2/pokemon?limit=${numPokemon}`;
     const res = await fetch(pokemonURL);
     const data = await res.json();
-    const pokesilinks = data.results.map((result, index) => ({
+    let pokesilinks = data.results.map((result, index) => ({
         ...result, //result és un objecte amb name i url com a atributs
         id: index + 1
     }))
 
+    //Codi de l'ordenat abans de mostrar-los
+    const select = document.getElementById('select');
+    if (select.value == 'nom') {
+        pokesilinks = pokesilinks.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    }
+    select.addEventListener('change', () => {
+        location.reload();
+    });
+
+    //Mostratge dels pokemon
     for (let j = 0; j < numPokemon; j++) {
         const pokemon = await obtainPokemon(pokesilinks[j]);
         displayPokemon(pokemon);
