@@ -72,7 +72,9 @@ const displayPokemon = (pokemon) => {
             //Creació MOVES
             const tableMoves = document.createElement('TABLE');
             const caption = document.createElement('CAPTION');
-            caption.textContent = 'Moves';
+            const titleMoves = document.createElement('H3');
+            titleMoves.textContent = 'Moves';
+            caption.appendChild(titleMoves);
             tableMoves.appendChild(caption);
             const theader = document.createElement('THEAD');
             const move = document.createElement('TH');
