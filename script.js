@@ -71,24 +71,6 @@ const displayPokemon = (pokemon) => {
             }
             //Creació MOVES
 
-            const caption = document.createElement('CAPTION');
-            const titleMoves = document.createElement('H3');
-            titleMoves.textContent = 'Moves';
-            caption.appendChild(titleMoves);
-            tableMoves.appendChild(caption);
-            const theader = document.createElement('THEAD');
-            const move = document.createElement('TH');
-            move.textContent = 'MOVE';
-            theader.appendChild(move);
-            const move_learn_method = document.createElement('TH');
-            move_learn_method.textContent = 'MOVE LEARN METHOD';
-            theader.appendChild(move_learn_method);
-            const version_group = document.createElement('TH');
-            version_group.textContent = 'VERSION GROUP';
-            theader.appendChild(version_group);
-            const level_learned_at = document.createElement('TH');
-            level_learned_at.textContent = 'LEVEL LEARNED AT';
-            theader.appendChild(level_learned_at);
             const tbody = document.createElement('TBODY');
             for (const move of pokemon.moves) {
                 const row = document.createElement('TR');
@@ -110,7 +92,6 @@ const displayPokemon = (pokemon) => {
                 row.appendChild(level_learned_at);
                 tbody.appendChild(row);
             }
-            tableMoves.appendChild(theader);
             tableMoves.appendChild(tbody);
             //moves.appendChild(tableMoves);
         }
@@ -193,7 +174,7 @@ modal.addEventListener('click', (e) => {
 
         //Remove moves from moves div
         const tableMoves = document.getElementById('moves');
-        while (tableMoves.childElementCount != 0) {
+        while (tableMoves.childElementCount != 2) {
             tableMoves.removeChild(tableMoves.lastChild);
         }
     }
