@@ -1,5 +1,5 @@
 
-const respCorrectes = [2, 0, 1, 1, 2, 3];
+const respCorrectes = [2, 0, 1, 1, 2, 3, 3, 2, 2, 0];
 
 for (let i = 1; i <= respCorrectes.length; i++) {
     const q = document.getElementById('q' + i);
