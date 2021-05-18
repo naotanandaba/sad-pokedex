@@ -41,13 +41,12 @@ const displayPokemon = (pokemon) => {
     li.classList.add('card');
     //li.id = 'card';
     //li.setAttribute('data-name', pokemon.name);
-    const modal = document.getElementById('modal');
+
     const height = document.getElementById('height');
     const weight = document.getElementById('weight');
     const abilities = document.getElementById('abilities');
-    const abilities_text = document.createElement('DIV');
-    const moves = document.getElementById('moves');
-    const tableMoves = document.createElement('TABLE');
+    //const moves = 
+    const tableMoves = document.getElementById('moves');
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
             modal.classList.add('modal--show');
@@ -68,10 +67,8 @@ const displayPokemon = (pokemon) => {
             for (i in pokemon.abilities) {
                 const p = document.createElement('P');
                 p.textContent = pokemon.abilities[i].ability.name.toUpperCase() + ': ' + pokemon.descAb[i];
-                abilities_text.appendChild(p);
+                abilities.appendChild(p);
             }
-            abilities.appendChild(abilities_text);
-
             //Creació MOVES
 
             const caption = document.createElement('CAPTION');
@@ -115,26 +112,11 @@ const displayPokemon = (pokemon) => {
             }
             tableMoves.appendChild(theader);
             tableMoves.appendChild(tbody);
-            moves.appendChild(tableMoves);
+            //moves.appendChild(tableMoves);
         }
 
     });
-    modal.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('modal-content') && !e.target
-            .parentElement.classList.contains('modal-content')) {
-            modal.classList.remove('modal--show');
 
-            //Remove abilities from the abilities div
-            if (abilities.lastElementChild === abilities_text) {
-                abilities.removeChild(lastChild);
-            }
-
-            //Remove moves from moves div
-            if (moves.firstChild) {
-                moves.removeChild(lastChild);
-            }
-        }
-    });
     const img = document.createElement('IMG');
     img.classList.add('card-image');
     img.setAttribute('src', `${pokemon.image}`);
@@ -195,6 +177,27 @@ const obtainPokemon = async (pokeilink) => {
         image: data.sprites.front_default
     }
 }
+
+const modal = document.getElementById('modal');
+
+modal.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('modal-content') && !e.target
+        .parentElement.classList.contains('modal-content')) {
+        modal.classList.remove('modal--show');
+
+        //Remove abilities from the abilities div
+        const abilities = document.getElementById('abilities');
+        while (abilities.childElementCount != 1) {
+            abilities.removeChild(abilities.lastChild);
+        }
+
+        //Remove moves from moves div
+        const tableMoves = document.getElementById('moves');
+        while (tableMoves.childElementCount != 0) {
+            tableMoves.removeChild(tableMoves.lastChild);
+        }
+    }
+});
 
 fetchPokemon();
 
