@@ -44,20 +44,97 @@ const displayPokemon = (pokemon) => {
     const modal = document.getElementById('modal');
     const height = document.getElementById('height');
     const weight = document.getElementById('weight');
+    const abilities = document.getElementById('abilities');
+    const moves = document.getElementById('moves');
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
             modal.classList.add('modal--show');
+
+            //Creacióo height i weight
             height.textContent = 'Height: ' + pokemon.height / 10 + ' ' + 'm';
             //height.classList.add('modal-content');
             weight.textContent = 'Weight: ' + pokemon.weight / 10 + ' ' + 'kg';
             //height.classList.add('modal-content');
+
+
+            //Creació STATS
+            for (const stat of pokemon.stats) {
+                const td = document.getElementById(stat.stat.name);
+                td.textContent = stat.base_stat;
+            }
+
+            //Creació ABILITIES (poden ser 1, 2 o 3)
+            for (i in pokemon.abilities) {
+                const p = document.createElement('P');
+                p.textContent = pokemon.abilities[i].ability.name.toUpperCase() + ': ' + pokemon.descAb[i];
+                abilities.appendChild(p);
+            }
+
+
+            console.log(pokemon.moves);
+            //Creació MOVES
+            const tableMoves = document.createElement('TABLE');
+            const caption = document.createElement('CAPTION');
+            caption.textContent = 'Moves';
+            tableMoves.appendChild(caption);
+            const theader = document.createElement('THEAD');
+
+            const move = document.createElement('TH');
+            move.textContent = 'MOVE';
+            theader.appendChild(move);
+            const move_learn_method = document.createElement('TH');
+            move_learn_method.textContent = 'MOVE LEARN METHOD';
+            theader.appendChild(move_learn_method);
+            const version_group = document.createElement('TH');
+            version_group.textContent = 'VERSION GROUP';
+            theader.appendChild(version_group);
+            const level_learned_at = document.createElement('TH');
+            level_learned_at.textContent = 'LEVEL LEARNED AT';
+            theader.appendChild(level_learned_at);
+
+
+
+            const tbody = document.createElement('TBODY');
+            for (const move of pokemon.moves) {
+                const row = document.createElement('TR');
+                const movement = document.createElement('TD');
+                movement.textContent = move.move.name;
+                row.appendChild(movement);
+                const move_learn_method = document.createElement('TD');
+                move_learn_method.textContent = move.version_group_details[0].move_learn_method.name;
+                row.appendChild(move_learn_method);
+                const version_group = document.createElement('TD');
+                version_group.textContent = move.version_group_details[0].version_group.name;
+                row.appendChild(version_group);
+                const level_learned_at = document.createElement('TD');
+                if (move.version_group_details[0].level_learned_at === 0) {
+                    level_learned_at.textContent = '-';
+                } else {
+                    level_learned_at.textContent = move.version_group_details[0].level_learned_at;
+                }
+                row.appendChild(level_learned_at);
+                tbody.appendChild(row);
+            }
+            tableMoves.appendChild(theader);
+            tableMoves.appendChild(tbody);
+            moves.appendChild(tableMoves);
         }
+
     });
     modal.addEventListener('click', (e) => {
-        console.log(e.target);
         if (!e.target.classList.contains('modal-content') && !e.target
             .parentElement.classList.contains('modal-content')) {
             modal.classList.remove('modal--show');
+
+            //Remove abilities from the abilities div
+            while (abilities.firstChild) {
+                abilities.removeChild(abilities.lastChild);
+            }
+
+            //Remove moves from moves div
+            while (moves.firstChild) {
+                moves.removeChild(moves.lastChild);
+            }
         }
     });
     const img = document.createElement('IMG');
