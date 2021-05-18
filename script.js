@@ -49,13 +49,12 @@ const displayPokemon = (pokemon) => {
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
             modal.classList.add('modal--show');
+            //Títol
+            document.getElementById('namePoke').textContent = pokemon.name.toUpperCase();
 
-            //Creacióo height i weight
+            //Creació height i weight
             height.textContent = 'Height: ' + pokemon.height / 10 + ' ' + 'm';
-            //height.classList.add('modal-content');
             weight.textContent = 'Weight: ' + pokemon.weight / 10 + ' ' + 'kg';
-            //height.classList.add('modal-content');
-
 
             //Creació STATS
             for (const stat of pokemon.stats) {
@@ -70,15 +69,12 @@ const displayPokemon = (pokemon) => {
                 abilities.appendChild(p);
             }
 
-
-            console.log(pokemon.moves);
             //Creació MOVES
             const tableMoves = document.createElement('TABLE');
             const caption = document.createElement('CAPTION');
             caption.textContent = 'Moves';
             tableMoves.appendChild(caption);
             const theader = document.createElement('THEAD');
-
             const move = document.createElement('TH');
             move.textContent = 'MOVE';
             theader.appendChild(move);
@@ -91,9 +87,6 @@ const displayPokemon = (pokemon) => {
             const level_learned_at = document.createElement('TH');
             level_learned_at.textContent = 'LEVEL LEARNED AT';
             theader.appendChild(level_learned_at);
-
-
-
             const tbody = document.createElement('TBODY');
             for (const move of pokemon.moves) {
                 const row = document.createElement('TR');
@@ -154,7 +147,7 @@ const displayPokemon = (pokemon) => {
         a.textContent = type.toUpperCase();
         a.classList.add(type);
         a.classList.add('typebox');
-
+        a.classList.add('link-no-style');
         p.appendChild(a);
     });
 

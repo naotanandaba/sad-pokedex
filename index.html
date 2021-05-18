@@ -10,23 +10,23 @@
 </head>
 
 <body>
-    <h1>Pokedex: pokemon list</h1>
+    <h1>POKEDEX: Pokemon List</h1>
     <nav>
         <ul class="menu" id="main-menu">
             <li class="menu-item">
-                <a href="index.html" class="menu-link">Llista de pokemon</a>
+                <a href="index.html" class="menu-link link-no-style">POKEMON LIST</a>
             </li>
             <li class="menu-item">
-                <a href="quiz.html" class="menu-link">Quiz</a>
+                <a href="quiz.html" class="menu-link link-no-style">QUIZ</a>
             </li>
 
         </ul>
     </nav>
     <form>
-        Ordenar per:
+        Order by:
         <select name="orders" id="select">
             <option value="id" selected>ID</option>
-            <option value="nom">Nom</option>
+            <option value="nom">Name</option>
 
         </select>
     </form>
@@ -35,10 +35,13 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
+            <h2 id="namePoke"></h2>
             <p id="height"></p>
             <p id="weight"></p>
             <table>
-                <caption>Stats</caption>
+                <caption>
+                    <h3>Stats</h3>
+                </caption>
                 <thead>
                     <th>PS</th>
                     <th>Attack</th>
@@ -57,7 +60,9 @@
                 </tbody>
             </table>
 
-            <div id="abilities"></div>
+            <div id="abilities">
+                <h3>Abilities</h3>
+            </div>
             <div id="moves"></div>
         </div>
     </div>

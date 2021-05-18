@@ -82,13 +82,21 @@ body{
     transform: scale(1);
 }
 
+.q{
+    margin-bottom: 10px;
+}
+
 .container {
     padding: 40px;
     margin:0 auto;
 }
 
-.typebox{
+.link-no-style{
     text-decoration: none;
+}
+
+.typebox{
+    
     border-style: ridge;
     margin-left: 10px;
     border-radius: 5px;
