@@ -45,7 +45,9 @@ const displayPokemon = (pokemon) => {
     const height = document.getElementById('height');
     const weight = document.getElementById('weight');
     const abilities = document.getElementById('abilities');
+    const abilities_text = document.createElement('DIV');
     const moves = document.getElementById('moves');
+    const tableMoves = document.createElement('TABLE');
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
             modal.classList.add('modal--show');
@@ -66,11 +68,12 @@ const displayPokemon = (pokemon) => {
             for (i in pokemon.abilities) {
                 const p = document.createElement('P');
                 p.textContent = pokemon.abilities[i].ability.name.toUpperCase() + ': ' + pokemon.descAb[i];
-                abilities.appendChild(p);
+                abilities_text.appendChild(p);
             }
+            abilities.appendChild(abilities_text);
 
             //Creació MOVES
-            const tableMoves = document.createElement('TABLE');
+
             const caption = document.createElement('CAPTION');
             const titleMoves = document.createElement('H3');
             titleMoves.textContent = 'Moves';
@@ -122,13 +125,13 @@ const displayPokemon = (pokemon) => {
             modal.classList.remove('modal--show');
 
             //Remove abilities from the abilities div
-            while (abilities.firstChild) {
-                abilities.removeChild(abilities.lastChild);
+            if (abilities.lastElementChild === abilities_text) {
+                abilities.removeChild(lastChild);
             }
 
             //Remove moves from moves div
-            while (moves.firstChild) {
-                moves.removeChild(moves.lastChild);
+            if (moves.firstChild) {
+                moves.removeChild(lastChild);
             }
         }
     });
