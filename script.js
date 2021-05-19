@@ -1,4 +1,4 @@
-const numPokemon = 850;
+const numPokemon = 151;
 const modal = document.getElementById('modal');
 
 const fetchPokemon = async () => {
@@ -12,6 +12,7 @@ const fetchPokemon = async () => {
     }))
 
     //Codi de l'ordenat abans de mostrar-los
+
     const select = document.getElementById('select');
     if (select.value == 'nom') {
         pokesilinks = pokesilinks.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
