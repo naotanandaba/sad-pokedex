@@ -41,6 +41,24 @@ td {
     background-color: aliceblue;
 }
 
+.part-quiz-1{
+    float: left; 
+    width: 30vw;
+    margin-left: 10vw;
+    padding: 0;
+}
+
+.part-quiz-2{
+    float: right; 
+    width: 30vw;
+    margin-left: 10vw;
+    padding: 0;
+}
+
+.q{
+    margin-bottom: 15px;
+}
+
 .button-quiz{
     margin-top: 10px;
 }
@@ -108,10 +126,6 @@ td {
 
 .modal--show{
     transform: scale(1);
-}
-
-.q{
-    margin-bottom: 15px;
 }
 
 .container {
