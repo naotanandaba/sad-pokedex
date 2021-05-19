@@ -172,4 +172,3 @@ modal.addEventListener('click', (e) => {
 
 //Funció principal
 fetchPokemon();
-
