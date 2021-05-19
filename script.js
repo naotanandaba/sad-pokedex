@@ -1,11 +1,5 @@
 const numPokemon = 151;
-
-const pokedex = document.getElementById("pokedex");
-
-const llistap = [];
-
-
-//TODO: Afegir id="card" i data-name="nompokemon" a cada un dels li, i escoltar els events amb id card i compararlos deprés amb data-name
+const modal = document.getElementById('modal');
 
 const fetchPokemon = async () => {
     //Obtenció de l'objecte amb tots els pokemon i links a la seva informació
@@ -30,23 +24,21 @@ const fetchPokemon = async () => {
     for (let j = 0; j < numPokemon; j++) {
         const pokemon = await obtainPokemon(pokesilinks[j]);
         displayPokemon(pokemon);
-        llistap.push(pokemon);
     }
 };
 
 //A partir d'1 objecte pokemon, es realitza el codi HTML amb les classes CSS adients per a visualitzar-lo
 const displayPokemon = (pokemon) => {
+    const pokedex = document.getElementById('pokedex');
     const li = document.createElement('LI');
-
     li.classList.add('card');
-    //li.id = 'card';
-    //li.setAttribute('data-name', pokemon.name);
 
     const height = document.getElementById('height');
     const weight = document.getElementById('weight');
     const abilities = document.getElementById('abilities');
-    //const moves = 
     const tableMoves = document.getElementById('moves');
+
+    //Event que es dispara quan es clica una targeta de pokemon, a excepció de typebox
     li.addEventListener('click', (e) => {
         if (!e.target.classList.contains('typebox')) {
             modal.classList.add('modal--show');
@@ -69,8 +61,8 @@ const displayPokemon = (pokemon) => {
                 p.textContent = pokemon.abilities[i].ability.name.toUpperCase() + ': ' + pokemon.descAb[i];
                 abilities.appendChild(p);
             }
-            //Creació MOVES
 
+            //Creació MOVES
             const tbody = document.createElement('TBODY');
             for (const move of pokemon.moves) {
                 const row = document.createElement('TR');
@@ -93,19 +85,19 @@ const displayPokemon = (pokemon) => {
                 tbody.appendChild(row);
             }
             tableMoves.appendChild(tbody);
-            //moves.appendChild(tableMoves);
         }
 
     });
-
+    //Creació de la imatge i títol de cada pokemon
     const img = document.createElement('IMG');
     img.classList.add('card-image');
     img.setAttribute('src', `${pokemon.image}`);
     const h2 = document.createElement('H2');
     h2.classList.add('card-title');
     h2.textContent = `${pokemon.id}. ${pokemon.name}`;
-    const p = document.createElement('P');
 
+    //Creació del text type i les typebox de cada pokemon
+    const p = document.createElement('P');
     p.textContent = 'Type:';
     pokemon.types.forEach((type) => {
         const a = document.createElement('A');
@@ -122,7 +114,6 @@ const displayPokemon = (pokemon) => {
     li.appendChild(img);
     li.appendChild(h2);
     li.appendChild(p);
-    const pokedex = document.getElementById('pokedex');
     pokedex.appendChild(li);
 }
 
@@ -159,8 +150,7 @@ const obtainPokemon = async (pokeilink) => {
     }
 }
 
-const modal = document.getElementById('modal');
-
+//Event que es dispara quan es clica fora de modal-content, per sortir del pop-up de cada pokemon. Borra també les habilitats i els moviments quan es surt del pop up.
 modal.addEventListener('click', (e) => {
     if (!e.target.classList.contains('modal-content') && !e.target
         .parentElement.classList.contains('modal-content')) {
@@ -180,5 +170,6 @@ modal.addEventListener('click', (e) => {
     }
 });
 
+//Funció principal
 fetchPokemon();
 
