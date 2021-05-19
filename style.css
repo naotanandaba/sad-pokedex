@@ -41,6 +41,10 @@ td {
     background-color: aliceblue;
 }
 
+.button-quiz{
+    margin-top: 10px;
+}
+
 .check-button{
     background-color: aliceblue;
 }
@@ -107,7 +111,7 @@ td {
 }
 
 .q{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .container {
