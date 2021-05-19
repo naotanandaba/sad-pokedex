@@ -1,4 +1,4 @@
-const numPokemon = 151;
+const numPokemon = 850;
 const modal = document.getElementById('modal');
 
 const fetchPokemon = async () => {
